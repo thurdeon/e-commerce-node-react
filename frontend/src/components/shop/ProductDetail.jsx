@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../store/store";
+import { Link } from "react-router-dom";
 function ProductDetail({ productData }) {
   const [productQuantity, setProductQuantity] = useState(1);
   const dispatch = useDispatch();
@@ -29,9 +30,7 @@ function ProductDetail({ productData }) {
 
 
 
-  const productQuantityHandler = ()=> {
-    setProductQuantity()
-  }
+ 
 
   return (
     <>
@@ -56,7 +55,8 @@ function ProductDetail({ productData }) {
               <h3 className="md:text-3xl text-2xl text-sky-700 font-bold">{`GHS ${productPrice}`}</h3>
               <div className="border-t border-solid border-gray-300"></div>
               <div className="overflow-hidden text-elipsis">
-                <p className="">{product.description}</p>
+              
+                <p className="">{`${product.description}`}</p>
               </div>
               <div className="flex md:justify-start md:items-start  items-center gap-4 md:gap-0 flex-nowrap md:grid md:grid-cols-2">
                 <div className="flex border justify-center items-center gap-4 border-gray-400 h-12 w-32">

@@ -1,6 +1,7 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, useRoutes } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './util/http.js';
+import { useState, useEffect } from 'react';
 
 import RootLayout from './pages/RootLayout.jsx';
 import LandingPage from './pages/LandingPage.jsx';
@@ -15,6 +16,8 @@ import AboutUs from './pages/AboutUsPage.jsx';
 import { ToastContainer } from 'react-toastify';
 
 function App() {
+  const [routeKey, setRouteKey] = useState(0);
+  
   const router = createBrowserRouter([
     {
       path: '/',
@@ -25,6 +28,10 @@ function App() {
           index: true,
           element: <LandingPage/>
         },
+        // {
+        //   path: 'product/:productId',
+        //   element: <ProductPage/>
+        // },
         {
           path: 'shop',
           children: [
@@ -34,7 +41,7 @@ function App() {
             },
             {
               path: 'product/:productId',
-              element: <ProductPage/>
+              element: <ProductPage key={routeKey}/>
             },
             {
               path: 'checkout',
@@ -71,7 +78,19 @@ function App() {
       ]
     }
   ])
+  
+  useEffect(() => {
+    // Increment route key whenever the route changes
+    const unsubscribe = router.subscribe(() => {
+      setRouteKey((prevKey) => prevKey + 1);
+    });
 
+    return () => {
+      unsubscribe();
+    };
+  }, [router]);
+
+  
   return <div>
     <QueryClientProvider client ={queryClient}>
     <ToastContainer position='top-center' limit={3}/>
