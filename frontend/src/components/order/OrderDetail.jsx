@@ -11,6 +11,8 @@ function OrderDetails () {
     dispatch(clearCart())
   }
 
+  const shippingRate = 20;
+
   const cartItemsClickHandler = (id, isIncrement) => {
     const action = isIncrement ? addItem : removeItem;
     dispatch(action({ id }));
@@ -58,8 +60,22 @@ function OrderDetails () {
                 </div>
                 );
             })
+            
+        
         
         }
+        <div className="flex font-bold justify-between">
+                    <span>Sub-total:</span>
+                    <span className="text-sky-700">{`GHS ${totalPrice}`}</span>
+        </div>
+        <div className="flex font-bold justify-between">
+                    <span>Shipping (Flat Rate):</span>
+                    <span className="text-sky-700">{`GHS ${shippingRate}`}</span>
+        </div>
+        <div className="flex font-bold justify-between">
+                    <span>Total Price:</span>
+                    <span className="text-sky-700">{`GHS ${totalPrice + shippingRate}`}</span>
+        </div>
     </>
     );
 }

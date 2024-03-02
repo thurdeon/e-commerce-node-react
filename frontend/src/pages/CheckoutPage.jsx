@@ -13,12 +13,12 @@ function CheckoutPage () {
             <p className=" font-bold text-center">
               No Items. Add Items to Cart
             </p>
-            <Link to="/shop"><button className="btn btn-primary">Return to Shop</button></Link>
+            <Link to="/shop" className="btn btn-primary">Return to Shop</Link>
             </div>
         )
     }
 
-    return <div className="ml-10 flex flex-col gap-4">
+    return <div className="ml-10 flex flex-col gap-4 mr-14 ">
         <OrderDetail/>
         <h1 className="font-bold text-2xl">Shipping Details</h1>
         <CheckoutForm/>

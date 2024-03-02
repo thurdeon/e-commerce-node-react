@@ -120,6 +120,7 @@ function CheckoutForm () {
           </label>
             </div>
           </div>
+          <button className='btn mt-10 btn-primary w-80'>Checkout</button>
       </div>
     );
 }
