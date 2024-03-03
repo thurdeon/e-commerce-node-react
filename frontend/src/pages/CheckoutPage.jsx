@@ -18,9 +18,9 @@ function CheckoutPage () {
         )
     }
 
-    return <div className="ml-10 flex flex-col gap-4 mr-14 ">
+    return <div className="flex flex-col ml-10 mr-10 md:flex-row-reverse gap-4 md:mr-96 md:ml-96">
         <OrderDetail/>
-        <h1 className="font-bold text-2xl">Shipping Details</h1>
+        {/* <h1 className="font-bold text-2xl">Shipping Details</h1> */}
         <CheckoutForm/>
     </div>
 }

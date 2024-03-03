@@ -18,12 +18,16 @@ function CheckoutForm () {
     const countryChangeHandler = (selectedCountry)=> {
       setCountry(selectedCountry);
     }
+
+    const mdClass = "md:grid md:grid-cols-2 md:gap-6";
+    const mdInputWidth = "md:w-32"
     return (
       <div className="flex flex-col md:grid md:grid-cols-2 ">
         
         {/* Shipping Details */}
         <div>
-            <div>
+          <h1 className='font-bold text-2xl mb-4'>Shipping Details</h1>
+            <div className={mdClass}>
         <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">First Name<span className="font-bold text-red-600">*</span></span>
@@ -48,7 +52,7 @@ function CheckoutForm () {
           </div>
 
 
-          <div>
+          <div className={mdClass}>
         <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Phone<span className="font-bold text-red-600">*</span></span>
@@ -76,7 +80,7 @@ function CheckoutForm () {
           </label>
           </div>
 
-          <div>
+          <div className={mdClass}>
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Select Country<span className="font-bold text-red-600">*</span></span>
@@ -95,7 +99,7 @@ function CheckoutForm () {
             />
           </label>
             </div>
-            <div>
+            <div className={mdClass}>
             <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">Street Address<span className="font-bold text-red-600">*</span></span>
@@ -118,9 +122,10 @@ function CheckoutForm () {
               
             />
           </label>
+          <button className='btn mt-10 btn-primary w-80'>Checkout</button>
             </div>
           </div>
-          <button className='btn mt-10 btn-primary w-80'>Checkout</button>
+          
       </div>
     );
 }

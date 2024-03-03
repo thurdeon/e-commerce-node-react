@@ -56,57 +56,7 @@ function Products({ featured }) {
   return (
     <>
   
-      {data.length === 0 && (
-        <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 gap-4 grid-cols-2">
-          <div className="flex flex-col gap-4 md:w-52 w-40">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>
-          <div className="flex flex-col gap-4 md:w-52 w-40">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>
-          <div className="flex flex-col gap-4 md:w-52 w-40">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>
-          <div className="flex flex-col gap-4 md:w-52 w-40">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>
-          <div className="flex flex-col gap-4 md:w-52 w-40">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>
-          <div className="flex flex-col gap-4 md:w-52 w-40">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>
-          <div className="flex flex-col gap-4 md:w-52 w-40">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>
-          <div className="flex flex-col gap-4 md:w-52 w-40">
-            <div className="skeleton h-32 w-full"></div>
-            <div className="skeleton h-4 w-28"></div>
-            <div className="skeleton h-4 w-full"></div>
-            <div className="skeleton h-4 w-full"></div>
-          </div>
-        </div>
+      {data.length === 0 && (<ShopLoader number={20} />
       )}
       <main className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 gap-4 grid-cols-2">
         {data.map((product) => {
@@ -116,13 +66,13 @@ function Products({ featured }) {
               <div className="relative group">
                 <div className="flex-grow card card-compact lg:w-60 bg-base-100 shadow-xl h-54 cursor-pointer">
                   <Link to={`/shop/product/${product.id}`}>
-                  <figure className="h-40 w-32 flex ">
+                  <figure className="h-40">
                     {!product.image && (
                       <span className="loading loading-ring loading-lg"></span>
                     )}
                     {product.image && (
                       <img
-                        className="w-full h-full object-cover"
+                        className="h-full object-cover"
                         src={product.image}
                         alt={product.title}
                       />
@@ -130,7 +80,7 @@ function Products({ featured }) {
                   </figure>
                   </Link>
                   <div className="card-body">
-                    <h2 className="card-title truncate overflow-hidden text-ellipsis text-sm">
+                    <h2 className="card-title line-clamp-2 overflow-hidden text-ellipsis text-sm">
                       {product.title}
                     </h2>
                     <h2 className="text-sky-800 font-bold">{`GHS ${productPrice}`}</h2>

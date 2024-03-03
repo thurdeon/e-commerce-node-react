@@ -45,7 +45,7 @@ function ProductDetail({ productData }) {
               <img
                 src={product.image}
                 alt={product.title}
-                className="p-4 md:max-h-96"
+                className="p-4 h-80 md:max-h-96"
               />
             </div>
             <div className="flex flex-col gap-2 md:mr-80 md:-ml-32">
@@ -66,7 +66,7 @@ function ProductDetail({ productData }) {
                 </div>
 
                 <div>
-                  <button className="bg-sky-600 rounded-sm text-white h-12 w-52 md:w-96" onClick={()=>addToCartHandler(
+                  <button className="bg-sky-600 hover:bg-sky-700 rounded-sm text-white h-12 w-52 md:w-96" onClick={()=>addToCartHandler(
                     product.id, 
                     product.title, 
                     product.image,

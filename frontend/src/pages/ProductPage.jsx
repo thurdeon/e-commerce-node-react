@@ -37,7 +37,7 @@ function ProductPage() {
 
   return (
     <>
-     <p>{productId}</p>
+     
       <ProductDetail productData={data} />
       <h2 className="font-bold text-2xl m-5 md:text-center md:mb-10">Recommended Products</h2>
       <ProductCarousel featured={true}  />

@@ -22,8 +22,8 @@ function OrderDetails () {
 
     
     return (
-        <>
-        <h1 className="font-bold text-2xl">{items.length > 1 ? "Products" : "Product"}</h1>
+        <div>
+        {/* <h1 className="font-bold text-2xl">{items.length > 1 ? "Products" : "Product"}</h1> */}
         {
             items.map(item=>{
                 return(
@@ -76,7 +76,7 @@ function OrderDetails () {
                     <span>Total Price:</span>
                     <span className="text-sky-700">{`GHS ${totalPrice + shippingRate}`}</span>
         </div>
-    </>
+    </div>
     );
 }
 
