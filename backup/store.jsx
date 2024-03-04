@@ -1,22 +1,16 @@
 import {createSlice, configureStore } from '@reduxjs/toolkit';
+import { data } from '../components/shop/FetchedProductsData.jsx'; 
 
-const highestPossiblePrice = 1000000000;
+const highestPossiblePrice = 1000000;
 
-const filterPrice = (data, minPrice, maxPrice) => {
-   return data.filter((item)=> item.price <= maxPrice && item.price >= minPrice)
+const filterByPrice = (data, minPrice, maxPrice) => {
+   data.filter((item)=> item.price <= maxPrice && item.price >= minPrice)
 };
 
-const filterCategory = (data, string)=> {
-  if(string ==='') {
-    return data.filter((item)=> item.category !== string); 
-  } else {
-   return data.filter((item)=> item.category === string);}
+const filterByString = (data, stringElement, string)=> {
+   data.filter((item)=> item[stringElement] === string);
 }
 
-const filterSearch = (data, string)=> {
-  const regex = new RegExp(string, 'i')
-  return data.filter((item) => regex.test(item.title));
-}
 
 
 
@@ -95,63 +89,24 @@ const cartSlice = createSlice({
 });
 
 const initialProductFilterState = {
-products: [],
+iteproducts: data,
 category: '',
-minPrice: 0,
-maxPrice: highestPossiblePrice,
-searchValue: ''
+priceRange: [0,highestPossiblePrice]
 }
 
 const productFilterSlice = createSlice({
   name: 'product',
   initialState: initialProductFilterState,
   reducers: {
+      // filterByCategory(state, action) {
+      //   if(action.payload.category) {
+      //     const category = action.payload.category;
+      //     state.category = category;
+      //   }
+        
+      //   state.products = state.products
 
-      clearFilters (state) {
-        state.products = [];
-        state.category = '';
-        state.minPrice = 0;
-        state.maxPrice = highestPossiblePrice
-      }, 
-
-      filterByCategory(state, action) {
-          const category = action.payload.category;
-          const data = action.payload.data;
-          state.category = category;
-          const filteredCategory = filterCategory(data, category);
-          const filteredProducts = filterPrice(filteredCategory, state.minPrice, state.maxPrice);
-          state.products = filteredProducts;
-
-      },
-
-      filterByPrice(state, action) {
-        const minPrice = action.payload.minPrice;
-        const maxPrice = action.payload.maxPrice;
-        const data = action.payload.data;
-        state.minPrice = minPrice;
-        state.maxPrice = maxPrice;
-        const filteredPrice = filterPrice(data, minPrice, maxPrice);
-        const filteredProducts = filterCategory(filteredPrice, state.category)
-        console.log(filteredProducts)
-        state.products = filteredProducts;
-      }, 
-
-      filterBySearch (state, action) {
-        const searchValue = action.payload.eventData;
-        const data = action.payload.data;
-        state.searchValue = searchValue;
-        let filteredSearch = filterSearch(data, searchValue);
-        if(state.maxPrice !== highestPossiblePrice) {
-          filteredSearch = filterPrice(filteredSearch, state.minPrice, state.maxPrice)
-        }
-
-        if(state.category!=='') {
-          filteredSearch = filterPrice(filteredSearch, state.category)
-        } 
-
-        state.products = filteredSearch;
-
-      }
+      // }
   }
 })
 const store = configureStore({
@@ -161,7 +116,7 @@ const store = configureStore({
     }
 })
 
-export const {clearFilters, filterByCategory, filterByPrice, filterBySearch} = productFilterSlice.actions;
+export const {filterByCategory} = productFilterSlice.actions;
 export const {addItem, removeItem, clearCart} = cartSlice.actions;
 
 export default store;
