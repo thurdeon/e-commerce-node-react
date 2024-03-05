@@ -1,7 +1,7 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import Categories from '../components/shop/Categories.jsx';
+import Filter from "../components/shop/Filter.jsx";
 import Products from '../components/shop/Products.jsx';
 
 function LandingPage () {
@@ -51,23 +51,31 @@ function LandingPage () {
             <section>
                 <div className="flex sm:justify-between sm:mr-20 mt-8">
                 <h2 className='sm:text-3xl text-2xl font-bold mb-8 '>Browse by Category</h2>
-                <span className="flex gap-3">
-                    <button className="btn btn-primary rounded-full"><IoIosArrowBack /></button>
-                    <button className="btn btn-primary rounded-full"><IoIosArrowForward /></button>                    
-                </span>
+                
                 </div>
+                <Filter/>
                 <div className="sm:mr-16">
                 {/* <Categories/> */}
                 </div>
             </section>
             <section className="flex md:justify-between mt-10 flex-col md:flex-row gap-4 sm:gap-0 mb-8 md:mb-5 ">
-                <h2 className='text-3xl font-bold'>Featured Products</h2>
-                <Link to="shop"><button className='btn btn-primary mr-5'>View All Products {<AiOutlineArrowRight/>}</button></Link>
+                <span className="flex items-center gap-1">
+                <div className="w-5 h-5 rounded-full bg-primary"></div>
+                <div className="w-5 h-5 absolute rounded-full bg-primary animate-ping"></div>
+                <h2 className='text-2xl font-bold'>Featured Products</h2>
+                </span>
+                <Link to="shop"><button className='btn btn-primary mr-5 hidden md:block'>View All Products {<AiOutlineArrowRight/>}</button></Link>
             </section>
             
             <Products featured={false}/>
+            <Link to="shop"><button className='btn btn-primary w-full mr-5 block md:hidden mt-5'>View All Products </button></Link>
             
-            <h1>BLOG</h1>
+            <div className="flex items-center mt-5">
+        <div className="h-[1px] w-full bg-gray-500"></div>
+      <span className="mx-4 text-black text-sm tracking-widest">PARTNERS</span>
+        <div className="h-[1px] w-full bg-gray-500"></div>
+    </div>
+
             <h1>BRANDS HOVER PUSH FORWARD NOT HOVERED BLACK AND WHITE PALE</h1>
         </div>
         </>
