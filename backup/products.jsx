@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 
-function Products({ featured }) {
+function Products({ source }) {
   // const [dataToBeDisplayed, setDataToBeDisplayed] = useState([]);
   
   const {products, category, priceRange} = useSelector((state)=>state.filter)
@@ -36,7 +36,7 @@ function Products({ featured }) {
 
   // const { data, isPending, error,} = useQuery({
   //   queryKey: ['products'],
-  //   queryFn: ()=> fetchProducts({featured})
+  //   queryFn: ()=> fetchProducts({source})
   // });
 
   // useEffect(() => {
@@ -52,7 +52,7 @@ function Products({ featured }) {
 
   
 //   if (isPending) {
-//     if (featured) {
+//     if (source) {
 //       return <ShopLoader number={8} />;
 //     } else {
 //       return <ShopLoader number={20} />;
@@ -138,13 +138,13 @@ function Products({ featured }) {
                 <div className="lg:w-56 bg-base-100 shadow-md  h-64 cursor-pointer">
                   <Link to={`/shop/product/${product.id}`}>
                   <figure className="flex justify-center items-center h-40">
-                    {!product.image && (
+                    {!product.thumbnail && (
                       <span className="loading loading-ring loading-lg"></span>
                     )}
-                    {product.image && (
+                    {product.thumbnail && (
                       <img
                         className="mt-5 h-full object-cover"
-                        src={product.image}
+                        src={product.thumbnail}
                         alt={product.title}
                       />
                     )}
@@ -164,7 +164,7 @@ function Products({ featured }) {
                           product.id,
                           product.title,
                           productPrice,
-                          product.image
+                          product.thumbnail
                         )
                       }
                       className="bg-white text-2xl"
