@@ -107,6 +107,53 @@ const productFilterSlice = createSlice({
       //   state.products = state.products
 
       // }
+
+
+      // function countProductsByCategory(products) {
+//   const categoryCounts = {};
+//   products.forEach((product) => {
+//     const category = product.category; // Assuming each product object has a 'category' property
+//     if (categoryCounts[category]) {
+//       categoryCounts[category]++;
+//     } else {
+//       categoryCounts[category] = 1;
+//     }
+//   });
+//   return categoryCounts;
+// }
+
+// const filterPrice = (data, minPrice, maxPrice) => {
+//     if(maxPrice === highestPossiblePrice) {
+//       return data.filter((item)=> item.price !== maxPrice)
+//     } else {
+//    return data.filter((item)=> item.price <= maxPrice && item.price >= minPrice)
+//   }
+// };
+
+// const filterCategory = (data, string)=> {
+//   if(string ==='') {
+//     return data.filter((item)=> item.category !== string); 
+//   } else {
+//    return data.filter((item)=> item.category === string);}
+// }
+
+// const filterSearch = (data, string)=> {
+//   const regex = new RegExp(string, 'i')
+//   return data.filter((item) => regex.test(item.title));
+// }
+
+
+
+
+// if(state.maxPrice !== highestPossiblePrice) {
+        //   filteredSearch = filterPrice(filteredSearch, state.minPrice, state.maxPrice)
+        // }
+
+        
+        // if(state.category!=='') {
+        //   filteredSearch = filterCategory(filteredSearch, state.category)
+        // } 
+
   }
 })
 const store = configureStore({
