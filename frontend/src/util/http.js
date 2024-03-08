@@ -4,7 +4,8 @@ export const queryClient = new QueryClient();
 
 export async function fetchProducts({ source }) {
  
-  let url = `https://dummyjson.com/products?limit=0`
+  let url = "https://dummyjson.com/products?limit=0";
+  
   
 if (source) {
   if (source==="featured") {
@@ -18,7 +19,9 @@ if (source) {
   }
   
   
+  
   const response = await fetch(url);
+  
   if (!response.ok) {
     const error = new Error("An error occured in fetching the products");
     error.code = response.status;

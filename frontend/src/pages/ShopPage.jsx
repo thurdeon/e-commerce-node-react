@@ -4,6 +4,7 @@ import Breadcrumbs from '../components/common/Breadcrumbs.jsx';
 import SideBarFilter from '../components/shop/filterAndSort/SideBarFilter.jsx';
 import Products from '../components/shop/Products.jsx';
 import Categories from '../components/shop/categories/Categories.jsx';
+import PaginatedProducts from '../components/shop/products/PaginatedProducts.jsx';
 
 
 function ShopPage () {
@@ -33,7 +34,7 @@ function ShopPage () {
                     <SideBarFilter/>
                 </div>
                 <div className='col-span-3'>
-                    <Products/>
+                <PaginatedProducts itemsPerPage={10}/>
                 </div>
             </section>
             
