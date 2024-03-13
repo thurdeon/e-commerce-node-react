@@ -10,6 +10,8 @@ function Breadcrumbs() {
     
     const breadcrumbs = filteredSegments.map((segment, index) => {
         segment == segments[1] ? url += segment : url += `/${segment}`;
+      
+        url === '/shop/product' ? url = '/shop' : url;
         return (
           <li key={index}>
             <Link to={url}>{segment}</Link>
@@ -17,9 +19,9 @@ function Breadcrumbs() {
         );
       
     });
-
+    
   return (
-    <div className="text-sm breadcrumbs ml-5 mt-2">
+    <div className="text-sm breadcrumbs md:ml-32 lg:ml-64 mb-2 ml-5 mt-2">
       <ul>
         <li>
           <Link to='/'>Home</Link>

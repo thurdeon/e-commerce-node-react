@@ -3,7 +3,7 @@ import { QueryClient } from "@tanstack/react-query";
 export const queryClient = new QueryClient();
 
 export async function fetchProducts({ source }) {
- 
+   
   let url = "https://dummyjson.com/products?limit=0";
   
   
@@ -47,6 +47,7 @@ export async function fetchProduct({productId}) {
     throw error;
   } else {
     const product = await response.json();
+    
     return [product];
   }
 }

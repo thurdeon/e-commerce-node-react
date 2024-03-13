@@ -1,9 +1,8 @@
+import TopScroll from './components/common/TopScroll.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './util/http.js';
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchData } from './store/productSlice.jsx';
+import { useState, useEffect, useMemo } from 'react';
 import RootLayout from './pages/RootLayout.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
@@ -17,7 +16,7 @@ import AboutUs from './pages/AboutUsPage.jsx';
 import { ToastContainer } from 'react-toastify';
 
 function App() {
-  const dispatch = useDispatch();
+  
   const [routeKey, setRouteKey] = useState(0);
   
   const router = createBrowserRouter([
@@ -82,10 +81,7 @@ function App() {
     }
   ])
   
-  useEffect(()=>{
-    dispatch(fetchData())
-
-}, []) 
+  
 
   useEffect(() => {
     // Increment route key whenever the route changes
@@ -99,12 +95,16 @@ function App() {
   }, [router]);
 
   
-  return <div>
+  return (
+    
     <QueryClientProvider client ={queryClient}>
+      
     <ToastContainer position='top-center' limit={3}/>
     <RouterProvider router={router}/>
+    
     </QueryClientProvider>
-    </div>
+    
+    )
       
   
 }

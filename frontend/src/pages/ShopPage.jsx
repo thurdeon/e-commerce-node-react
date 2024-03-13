@@ -2,13 +2,19 @@ import SortBase from '../components/shop/filterAndSort/SortBase.jsx';
 import MobileFilter from '../components/shop/filterAndSort/MobileFilter.jsx'
 import Breadcrumbs from '../components/common/Breadcrumbs.jsx';
 import SideBarFilter from '../components/shop/filterAndSort/SideBarFilter.jsx';
-import Products from '../components/shop/Products.jsx';
 import Categories from '../components/shop/categories/Categories.jsx';
 import PaginatedProducts from '../components/shop/products/PaginatedProducts.jsx';
+import { fetchData } from '../store/productSlice.jsx';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 
 function ShopPage () {
-    
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(fetchData())
+    }, []) 
     return (
     <>
     <Breadcrumbs/>

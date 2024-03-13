@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../store/cartSlice.jsx";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -8,9 +8,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs'
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
-function ProductDetail({ productData }) {
+function ProductDetail() {
+
   const [productQuantity, setProductQuantity] = useState(1);
   const dispatch = useDispatch();
+
+  const {productData} = useSelector(state=>state.singleProduct)
 
   const addToCartHandler = (id, title, image, price, quantity) => {
     dispatch(addItem({ id, title, image, price, quantity }));
@@ -22,9 +25,9 @@ function ProductDetail({ productData }) {
     }
   };
 
-  const incrementHandler = () => updateProductQuantity(productQuantity + 1);
+  const incrementHandler = () => updateProductQuantity(productQuantity+1);
 
-  const decrementHandler = () => updateProductQuantity(productQuantity - 1);
+  const decrementHandler = () => updateProductQuantity(productQuantity-1);
 
   return (
     <>
@@ -72,7 +75,7 @@ function ProductDetail({ productData }) {
                 </div>
                 <div className="rating flex mt-3 gap-1">
                   {[...Array(5)].map((_, index) => (
-                    <input key={index} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked={index === Math.floor(product.rating-1)} />
+                    <input key={index} type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" checked={index === Math.floor(product.rating-1)} readOnly/>
                     
                   ))}
                   <span>({product.stock} in stock)</span>
@@ -80,9 +83,10 @@ function ProductDetail({ productData }) {
               </div>
               <div className="flex md:items-center md:justify-normal items-center gap-4 md:gap-0 mt-5 flex-nowrap md:grid md:grid-cols-2 ">
                 <div className="flex justify-center items-center gap-4 border-2 border-gray-400 h-12 w-32 rounded-full">
-                  <button onClick={incrementHandler} className="hover:font-bold">+</button>
+                <button onClick={decrementHandler} className="hover:font-bold">-</button>
+                  
                   <p>{productQuantity}</p>
-                  <button onClick={decrementHandler} className="hover:font-bold">-</button>
+                  <button onClick={incrementHandler} className="hover:font-bold">+</button>
                 </div>
                 <div>
                   <button className="bg-primary hover:bg-sky-700 rounded-full text-white h-12 w-52 md:w- xl:-ml-28 md:-ml-16" onClick={() => addToCartHandler(product.id, product.title, product.thumbnail, discountedPrice, productQuantity)}>ADD TO CART</button>
